@@ -1,0 +1,252 @@
+/*
+* CaptionBox, CSS for an image plugin for jQuery
+* Intructions: http://captionbox.davidvyvlecka.cz/
+* By: David Vyvlečka, http://davidvyvlecka.cz
+* Version: 1.0.0
+* Updated: September 17th, 2017
+*
+* Copyright 2017 David Vyvlečka
+* 
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+* 
+*     http://www.apache.org/licenses/LICENSE-2.0
+
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+.captionBox {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fbfbfb;
+    text-align: center;
+    display: none; 
+}
+
+.captionBox * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.captionBox .arrow{
+    position: absolute;    
+    width: 40px;         
+    height: 40px;       
+    background: transparent;  
+    text-indent: -9999px;       
+    border-top: 1px solid #737373;    
+    border-left: 1px solid #737373;   
+    transition: all .3s ease-in-out;    
+    text-decoration: none;      
+    color: transparent;
+    top: calc(50% - 20px);
+}
+.captionBox .arrow:before {  
+    display: block;        
+    height: 200%;        
+    width: 200%;        
+    margin-left: -50%;   
+    margin-top: -50%;    
+    content: "";         
+    transform: rotate(45deg);   
+}
+
+.captionBox .arrow-left, .captionBox .arrow-right{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    z-index: 1000;
+    cursor: pointer;
+}
+.captionBox .arrow-right{
+  left: auto;
+  right: 0;
+}
+.captionBox .arrow-left .arrow{
+    transform: rotate(-45deg);  
+    left: 2em;
+}       
+.captionBox .arrow-right .arrow{
+    transform: rotate(135deg); 
+    right: 2em;
+}
+.captionBox .arrow-left:hover .arrow, .captionBox .arrow-right:hover .arrow{
+  border-color: #8BABB5;
+  border-width: 2px;
+}
+
+.captionBox .image{
+    max-width: calc(85% - 60px);
+    margin: 0 auto;
+    //height: 75vh;
+    margin-top: 15px;
+    position: relative;
+}
+.captionBox .image img{
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+    display: inline-block;
+}
+
+.captionBox .close {
+    position: absolute;
+    top: 15px;
+    right: 2em;
+    z-index: 1001;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    color: transparent;
+    transition: all .3s ease-in-out;   
+}
+.captionBox .close::before, .captionBox .close::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #737373;
+    transition: all .3s ease-in-out;
+}
+.captionBox .close:hover::before, .captionBox .close:hover::after{
+    height: 2px;
+    background: #8BABB5;
+}
+.captionBox .close::before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.captionBox .close::after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.captionBox .info{
+  max-width: 1024px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding-bottom: 30px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.captionBox .img_desc{
+  width: calc(100% - 250px);
+  text-align: justify;
+  line-height: 130%;
+  font-size: 90%;
+  margin-top: 0;
+  display: inline-block;
+  float: left;
+  clear: left;
+  margin-bottom: 0;
+  color: #3D3D3D;
+}
+
+.captionBox .exif{
+  float: right;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  max-width: 210px;
+  margin-top: 1.5em;
+}
+
+.captionBox .exif li{
+  list-style: none;
+  font-size: 80%;
+  line-height: 120%;
+}
+
+.captionBoxImage .customCaption{
+  display: none;
+}
+
+.captionBox.mobile{
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.captionBox.mobile .image{
+  width: 100%;
+  max-width: 100%;
+  max-height: 100vh;
+  margin-top: 0;
+}
+.captionBox.mobile .image img{
+  max-height: 100vh;
+}
+.captionBox.mobile .info{
+  width: 96%;
+  padding: 0 2%;
+  padding-bottom: 20px;
+  padding-top: 40px;
+}
+.captionBox.mobile .exif{
+  display: none;
+}
+.captionBox.mobile .img_desc{
+  width: 100%;
+  float: none;
+}
+.captionBox.mobile .arrow{
+  margin-top: 15px;
+}       
+.captionBox.mobile .arrow{
+  left: 0;
+  right: auto;
+}  
+.captionBox.mobile .arrow-left .arrow{
+  right: 0;
+  left: auto;
+} 
+.captionBox.mobile .close{
+  right: 0;
+  left: 0;
+  margin: auto;
+  margin-top: 12px;
+}
+.captionBox.mobile .close::before, .captionBox.mobile .close::after{
+  background: #737373;
+}
+.captionBox.mobile .arrow{
+  border-top: 1px solid #737373;
+  border-left: 1px solid #737373;
+}
+.ui-page{
+ -moz-box-shadow: none !important;
+ -webkit-box-shadow: none !important;
+ box-shadow: none !important;
+ outline: none !important;
+}
+.ui-loader{
+  display: none;
+}
+
